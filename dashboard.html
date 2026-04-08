@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  display:flex;
+  height:100vh;
+  background:linear-gradient(135deg,#ff9a9e,#fecfef);
+}
+
+/* Sidebar */
+.sidebar{
+  width:220px;
+  background:#ff6ec4;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.sidebar h2{
+  color:white;
+  margin-bottom:30px;
+}
+
+.sidebar button{
+  width:100%;
+  margin:10px 0;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#260217;
+  color:white;
+  cursor:pointer;
+}
+
+.sidebar button:hover{
+  background:#ff4db8;
+}
+
+/* Content */
+.content{
+  flex:1;
+  padding:20px;
+  overflow:auto;
+}
+
+/* Cards */
+.card{
+  background:#ffe6f0;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h2{
+  color:#d63384;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h2>Library</h2>
+  <button onclick="go('home.html')">Home</button>
+  <button onclick="go('books.html')">Books</button>
+  <button onclick="go('borrow.html')">Borrow</button>
+  <button onclick="go('categories.html')">Categories</button>
+  <button onclick="go('logs.html')">Logs</button>
+  <button onclick="go('dashboard.html')">Dashboard</button>
+</div>
+
+<!-- Content -->
+<div class="content">
+
+  <div class="card">
+    <h2>Statistics</h2>
+    <p>Total Books: 5</p>
+    <p>Total Users: 2</p>
+  </div>
+
+  <div class="card">
+    <h2>Bar Chart</h2>
+    <canvas id="barChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>Pie Chart</h2>
+    <canvas id="pieChart"></canvas>
+  </div>
+
+</div>
+
+<script>
+// Navigation
+function go(p){
+  window.location.href = p;
+}
+
+// Bar Chart
+new Chart(document.getElementById("barChart"), {
+  type: 'bar',
+  data: {
+    labels: ["Books", "Users"],
+    datasets: [{
+      label: "Library Data",
+      data: [5, 2],
+      backgroundColor: ["#ff6ec4","#260217"]
+    }]
+  }
+});
+
+// Pie Chart
+new Chart(document.getElementById("pieChart"), {
+  type: 'pie',
+  data: {
+    labels: ["Books", "Users"],
+    datasets: [{
+      data: [5, 2],
+      backgroundColor: ["#ff6ec4","#260217"]
+    }]
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Library Home</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  display:flex;
+  height:100vh;
+  background:linear-gradient(135deg,#ff9a9e,#fecfef);
+}
+
+/* Sidebar */
+.sidebar{
+  width:220px;
+  background:#ff6ec4;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.sidebar h2{
+  color:white;
+  margin-bottom:30px;
+}
+
+.sidebar button{
+  width:100%;
+  margin:10px 0;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#260217;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.sidebar button:hover{
+  background:#ff4db8;
+  transform:scale(1.05);
+}
+
+/* Main Content */
+.content{
+  flex:1;
+  padding:30px;
+  overflow-y:auto;
+  background:#ffe6f0;
+}
+
+.content h1{
+  color:#d63384;
+}
+
+/* Scroll styling */
+.content::-webkit-scrollbar{
+  width:8px;
+}
+.content::-webkit-scrollbar-thumb{
+  background:#ff6ec4;
+  border-radius:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h2>Library</h2>
+  <button onclick="go('books.html')">Books</button>
+  <button onclick="go('categories.html')">Categories</button>
+  <button onclick="go('logs.html')">Logs</button>
+  <button onclick="go('dashboard.html')">Dashboard</button>
+  <button onclick="go('index.html')">Logout</button>
+  <button onclick="go('borrow.html')">Borrow</button>
+  <button onclick="go('review.html')">Review</button>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+  <h1>About My Library</h1>
+
+  <p>
+  The Library Management System is a modern and user-friendly application designed to simplify the management of books, users, and library operations. In today’s fast-paced digital world, traditional library systems that rely on manual record keeping are becoming inefficient and error-prone. This system aims to provide a seamless experience by offering a structured and visually appealing interface that allows users and administrators to interact with the system effortlessly.
+  </p>
+
+  <p>
+  The application is built using front-end technologies such as HTML, CSS, and JavaScript, ensuring that it is lightweight, fast, and easy to use. One of the key highlights of this system is its elegant pink-themed user interface, which enhances the overall user experience while maintaining a professional look. The sidebar navigation panel allows users to easily switch between different sections such as books, categories, logs, and dashboard without confusion.
+  </p>
+
+  <p>
+  The Books section enables users to view and manage available books. Users can add new books dynamically, making the system interactive and flexible. Even though the current implementation does not use a backend database, it demonstrates how data can be handled effectively on the front end. This approach is useful for learning purposes and for understanding how real-world applications function.
+  </p>
+
+  <p>
+  The Categories section organizes books into different genres such as fiction, science, and technology. This helps users quickly find books of their interest. Categorization is an important feature in any library system as it improves accessibility and enhances user satisfaction.
+  </p>
+
+  <p>
+  The Logs section provides a record of activities performed within the system. This includes actions like user login, book addition, and navigation between pages. Logs are essential in real applications as they help in tracking user behavior and debugging issues.
+  </p>
+
+  <p>
+  The Dashboard offers a quick overview of the system, displaying key statistics such as total number of books and users. This feature is especially useful for administrators who need a summary of the system’s performance at a glance.
+  </p>
+
+  <p>
+  Another important aspect of this project is its responsive and intuitive design. The layout ensures that the navigation menu is always accessible on the left side, while the main content is displayed clearly on the right. This design pattern is widely used in professional applications because it improves usability and provides a clean structure.
+  </p>
+
+  <p>
+  Although this version of the Library Management System is built without a backend, it can be easily extended in the future by integrating technologies such as Node.js and databases like PostgreSQL or MongoDB. This would allow the system to store data permanently, support multiple users, and implement advanced features such as authentication, book issuing, and return tracking.
+  </p>
+
+  <p>
+  In conclusion, this Library Management System serves as a foundational project that demonstrates the core concepts of web development, user interface design, and application structure. It is an excellent starting point for students and developers who want to build more advanced systems in the future.
+  </p>
+
+</div>
+
+<script>
+function go(page){
+  window.location.href = page;
+}
+</script>
+
+</body>
+</html>

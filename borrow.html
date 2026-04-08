@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Borrow Books</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  display:flex;
+  height:100vh;
+  background:linear-gradient(135deg,#ff9a9e,#fecfef);
+}
+
+/* Sidebar */
+.sidebar{
+  width:220px;
+  background:#ff6ec4;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.sidebar h2{
+  color:white;
+  margin-bottom:30px;
+}
+
+.sidebar button{
+  width:100%;
+  margin:10px 0;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#260217;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.sidebar button:hover{
+  background:#ff4db8;
+  transform:scale(1.05);
+}
+
+/* Content */
+.content{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Card */
+.card{
+  background:#ffe6f0;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  text-align:center;
+  width:350px;
+  animation:fadeIn 1s;
+}
+
+h3{
+  color:#d63384;
+}
+
+/* Book list */
+ul{
+  list-style:none;
+  padding:0;
+}
+
+li{
+  background:#ff6ec4;
+  color:white;
+  margin:8px;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+li:hover{
+  background:#ff4db8;
+  transform:scale(1.05);
+}
+
+/* Borrowed section */
+.borrowed{
+  margin-top:15px;
+  background:#fff;
+  padding:10px;
+  border-radius:10px;
+}
+
+/* Button */
+button{
+  background:#260217;
+  color:white;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  margin-top:10px;
+  cursor:pointer;
+}
+button:hover{
+  background:#ff4db8;
+}
+
+/* Animation */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h2>Library</h2>
+  <button onclick="go('home.html')">Home</button>
+  <button onclick="go('books.html')">Books</button>
+  <button onclick="go('borrow.html')">Borrow</button>
+  <button onclick="go('categories.html')">Categories</button>
+  <button onclick="go('logs.html')">Logs</button>
+  <button onclick="go('dashboard.html')">Dashboard</button>
+</div>
+
+<!-- Content -->
+<div class="content">
+  <div class="card">
+    <h3>Borrow Books</h3>
+
+    <p>Click a book to borrow:</p>
+
+    <ul id="bookList"></ul>
+
+    <div class="borrowed">
+      <h4>Borrowed Books</h4>
+      <ul id="borrowedList"></ul>
+    </div>
+
+    <button onclick="goHome()">Back</button>
+  </div>
+</div>
+
+<script>
+let books = ['Java','DBMS','OS','Python','Networks'];
+let borrowed = [];
+
+function loadBooks(){
+  let list = document.getElementById('bookList');
+  list.innerHTML = '';
+  books.forEach(b=>{
+    let li = document.createElement('li');
+    li.innerText = b;
+    li.onclick = ()=>borrowBook(b);
+    list.appendChild(li);
+  });
+}
+
+function borrowBook(book){
+  borrowed.push(book);
+  updateBorrowed();
+}
+
+function updateBorrowed(){
+  let list = document.getElementById('borrowedList');
+  list.innerHTML = '';
+  borrowed.forEach(b=>{
+    let li = document.createElement('li');
+    li.innerText = b;
+    list.appendChild(li);
+  });
+}
+
+function go(page){
+  window.location.href = page;
+}
+
+function goHome(){
+  window.location.href = 'home.html';
+}
+
+loadBooks();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<html>
+<head>
+<title>Library App</title>
+<style>
+
+body{
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  background:#da4f87; /* light pink background */
+  overflow:hidden;
+}
+
+/* Bubble effect */
+.bubble{
+  position:absolute;
+  bottom:-100px;
+  width:30px;
+  height:30px;
+  background:rgba(255,255,255,0.4);
+  border-radius:50%;
+  animation:rise 10s infinite ease-in;
+}
+@keyframes rise{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-1000px);}
+}
+
+.container{
+  position:relative;
+  z-index:2;
+}
+
+.card{
+  background:#f11a77; /* light pink instead of dark */
+  padding:20px; /* smaller */
+  width:260px; /* reduced size */
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  animation:fadeIn 1s;
+}
+
+/* Inputs & Buttons */
+button{
+  background:#260217;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:10px;
+  margin:8px;
+  cursor:pointer;
+  transition:0.3s;
+}
+button:hover{
+  transform:scale(1.1);
+  background:#ff4db8;
+}
+
+input{
+  padding:12px;
+  margin:8px;
+  width:200px;
+  border-radius:4px;
+  border:1px solid #ccc;
+  background:#fff0f5; /* light pink input */
+}
+
+/* Fade Animation */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);} 
+  to{opacity:1; transform:translateY(0);} 
+}
+
+/* Animated Book Icon */
+.book{
+  font-size:50px;
+  display:inline-block;
+  animation:float 2s infinite ease-in-out;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);} 
+  50%{transform:translateY(-10px);} 
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="bubbles"></div>
+
+<div class="container">
+  <div class="card">
+    <div class="book">📚</div>
+    <h2>Library Login</h2>
+    <input placeholder="Username"><br>
+    <input type="password" placeholder="Password"><br>
+    <button onclick="goHome()">User Login</button>
+    <button onclick="goHome()">Admin Login</button>
+  </div>
+</div>
+
+<script>
+// Bubble generator
+for(let i=0;i<20;i++){
+  let b=document.createElement('div');
+  b.classList.add('bubble');
+  b.style.left=Math.random()*100+'%';
+  b.style.animationDuration=(5+Math.random()*5)+'s';
+  document.body.appendChild(b);
+}
+
+function goHome(){
+  window.location.href='home.html';
+}
+</script>
+
+</body>
+</html>

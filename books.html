@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Books</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  display:flex;
+  height:100vh;
+  background:linear-gradient(135deg,#ff9a9e,#fecfef);
+}
+
+/* Sidebar */
+.sidebar{
+  width:220px;
+  background:#ff6ec4;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.sidebar h2{
+  color:white;
+  margin-bottom:30px;
+}
+
+.sidebar button{
+  width:100%;
+  margin:10px 0;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#260217;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.sidebar button:hover{
+  background:#ff4db8;
+  transform:scale(1.05);
+}
+
+/* Content */
+.content{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Card */
+.card{
+  background:#ffe6f0;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  text-align:center;
+  width:320px;
+  animation:fadeIn 1s;
+}
+
+h3{
+  color:#d63384;
+}
+
+/* List */
+ul{
+  list-style:none;
+  padding:0;
+}
+
+li{
+  background:#ff6ec4;
+  color:white;
+  margin:8px;
+  padding:8px;
+  border-radius:8px;
+}
+
+/* Inputs */
+input{
+  padding:10px;
+  margin-top:10px;
+  width:90%;
+  border-radius:5px;
+  border:1px solid #ccc;
+  background:#fff0f5;
+}
+
+/* Buttons */
+.card button{
+  background:#260217;
+  color:white;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  margin-top:10px;
+  cursor:pointer;
+}
+.card button:hover{
+  background:#ff4db8;
+}
+
+/* Animation */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h2>Library</h2>
+  <button onclick="go('home.html')">Home</button>
+  <button onclick="go('books.html')">Books</button>
+  <button onclick="go('categories.html')">Categories</button>
+  <button onclick="go('logs.html')">Logs</button>
+  <button onclick="go('dashboard.html')">Dashboard</button>
+</div>
+
+<!-- Content -->
+<div class="content">
+  <div class="card">
+    <h3>Books</h3>
+    <ul id="list"></ul>
+
+    <input id="book" placeholder="Add Book">
+    <button onclick="add()">Add</button>
+    <button onclick="goHome()">Back</button>
+  </div>
+</div>
+
+<script>
+let books=['Java','DBMS','OS'];
+
+function load(){
+  let l=document.getElementById('list');
+  l.innerHTML='';
+  books.forEach(b=>{
+    let li=document.createElement('li');
+    li.innerText=b;
+    l.appendChild(li);
+  });
+}
+
+function add(){
+  let b=document.getElementById('book').value;
+  if(b){
+    books.push(b);
+    load();
+  }
+}
+
+function goHome(){
+  window.location.href='home.html';
+}
+
+function go(page){
+  window.location.href=page;
+}
+
+load();
+</script>
+
+</body>
+</html>
